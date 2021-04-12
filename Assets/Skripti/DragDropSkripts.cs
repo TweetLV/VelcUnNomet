@@ -8,14 +8,14 @@ using UnityEngine.EventSystems;
 //Piesaista pointer interfeisu
 public class DragDropSkripts : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-   // public Objekti objektuSkripts;
-    private RectTransform transformacijuLogs;
+   public Objekti objektuSkripts;
+    private RectTransform velkObjRectTransf;
     private CanvasGroup kanvasGrupa;
 
     private void Awake()
     {
         kanvasGrupa = GetComponent<CanvasGroup>();
-        transformacijuLogs = GetComponent<RectTransform>();
+        velkObjRectTransf = GetComponent<RectTransform>();
     }
     //Funkcija nostrādā, kad uzkliksķināts uz parvietojama objekta
     public void OnPointerDown(PointerEventData notikums)
@@ -26,6 +26,7 @@ public class DragDropSkripts : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     public void OnBeginDrag(PointerEventData notikums)
     {
         Debug.Log("Uzsakta parvietošana!");
+        objektuSkripts.pedejaisVilktais = null;
         kanvasGrupa.alpha = 0.6f;
         kanvasGrupa.blocksRaycasts = false;
     }
@@ -33,12 +34,28 @@ public class DragDropSkripts : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     //Funkcija nostrādā pārvietošanas brīdī
     public void OnDrag(PointerEventData notikums)
     {
-        //transformacijuLogs.anchoredPosition += notikums.delta / objektuSkripts.scaleFactor;
+        Debug.Log("Notiek vilkšana!");
+        velkObjRectTransf.anchoredPosition += notikums.delta / objektuSkripts.kanva.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData notikums)
     {
+        objektuSkripts.pedejaisVilktais = notikums.pointerDrag;
+        Debug.Log("Pedejais vilktais objekts: " + objektuSkripts.pedejaisVilktais);
         Debug.Log("Vilkšana pabeigta!");
+        kanvasGrupa.alpha = 1f;
+
+        if (objektuSkripts.vaiIstajaVieta==false)
+        {
+            kanvasGrupa.blocksRaycasts = true;
+
+        }
+        else
+        {
+            objektuSkripts.pedejaisVilktais = null;
+        }
+
+        objektuSkripts.vaiIstajaVieta = false;
     }
 
 }
