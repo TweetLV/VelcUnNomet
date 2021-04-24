@@ -7,13 +7,12 @@ public class ObjektuTransformacijas : MonoBehaviour
     //Uzglabā noradi uz Objektu skriptu
     public Objekti objektuSkripts;
 
-    // Update is called once per frame
     void Update()
     {
        //Ja ir kāds pēdejais vilktais objekts, tad var veikt darbības ar to
        if(objektuSkripts.pedejaisVilktais != null)
         {
-            //nospiežot pogu Z var rotet pretēji pulksteņrādītāja virzienam
+            //nospiežot pogu Z var rotet pa pulksteņrādītāja virzienu
             if (Input.GetKey(KeyCode.Z))
             {
                 objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.Rotate(0, 0, Time.deltaTime * 9f);
@@ -34,6 +33,7 @@ public class ObjektuTransformacijas : MonoBehaviour
                     objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale = new Vector2(objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.x - 0.001f, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.y);
                 }
             }
+            //Nospiežot bultiņu pa labi, iespējams objektu stiept lielāku pa x asi
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 //Lai objektu nevar izstiept parak plašu
@@ -42,15 +42,19 @@ public class ObjektuTransformacijas : MonoBehaviour
                     objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale = new Vector2(objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.x + 0.001f, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.y);
                 }
             }
+            //Nospiežot bultiņu uz augšu, iespējams objektu stiept lielāku pa y asi
             if (Input.GetKey(KeyCode.UpArrow))
             {
+                //Lai objektu nevar izstiept parak plašu
                 if (objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.y < 0.8)
                 {
                     objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale = new Vector2(objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.x, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.y + 0.001f);
                 }
             }
+            //Nospiežot bultiņu uz leju, iespējams objektu stiept šaurāku pa y asi
             if (Input.GetKey(KeyCode.DownArrow))
             {
+                //Lai objektu nevar izstiept mīnusā
                 if (objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.y > 0.35)
                 {
                     objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().localScale = new Vector2(objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.x, objektuSkripts.pedejaisVilktais.GetComponent<RectTransform>().transform.localScale.y - 0.001f);

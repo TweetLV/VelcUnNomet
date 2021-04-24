@@ -7,5 +7,5 @@
 - [x] Pievienot 8 jaunus objektus un to transformāciju un vilkšanu
 - [x] Pievienot jaunajiem objektiem skaņas ko atskaņot, kad ievietoti pareizajā vietā.
 - [x] Realizēt uzvaras logu
-- [ ] Realizēt jaunas ainas izveidi, kurā parādīts sākuma izvelne.
-- [ ] Veikt koda komentēšanu
+- [x] Realizēt jaunas ainas izveidi, kurā parādīts sākuma izvelne.
+- [x] Veikt koda komentēšanu

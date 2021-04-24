@@ -52,6 +52,7 @@ public class DragDropSkripts : MonoBehaviour, IPointerDownHandler, IBeginDragHan
 
         }
         else
+        //Tiek izsaukta spēles beigas metode, lai saskaitītu novietotās mašīnas.
         {
             objektuSkripts.pedejaisVilktais = null;
             SpelesBeigas.skaitijas();
