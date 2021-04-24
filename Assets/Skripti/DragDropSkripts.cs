@@ -8,7 +8,8 @@ using UnityEngine.EventSystems;
 //Piesaista pointer interfeisu
 public class DragDropSkripts : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-   public Objekti objektuSkripts;
+    public Objekti objektuSkripts;
+    public SpelesBeigas SpelesBeigas;
     private RectTransform velkObjRectTransf;
     private CanvasGroup kanvasGrupa;
 
@@ -53,6 +54,7 @@ public class DragDropSkripts : MonoBehaviour, IPointerDownHandler, IBeginDragHan
         else
         {
             objektuSkripts.pedejaisVilktais = null;
+            SpelesBeigas.skaitijas();
         }
 
         objektuSkripts.vaiIstajaVieta = false;
